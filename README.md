@@ -96,12 +96,12 @@ When prompted, enter:
 ACR_NAME=$(az acr list --resource-group rg-MoltBot-prod --query "[0].name" -o tsv)
 
 # Build the image in Azure (no local Docker needed!)
-az acr build --registry $ACR_NAME --image "MoltBot:latest" --file src/MoltBot/Dockerfile src/MoltBot/
+az acr build --registry $ACR_NAME --image "moltbot:latest" --file src/MoltBot/Dockerfile src/MoltBot/
 ```
 
 **Understanding this command:**
 - `--registry $ACR_NAME` - Build in your ACR (in the cloud)
-- `--image "MoltBot:latest"` - Name the output image (we choose this name)
+- `--image "moltbot:latest"` - Name the output image (we choose this name)
 - `--file src/MoltBot/Dockerfile` - Use the Dockerfile from this repo
 - `src/MoltBot/` - Send this folder as build context
 
@@ -110,7 +110,7 @@ This takes about 3-5 minutes. The Dockerfile automatically:
 2. Installs dependencies and builds the app
 3. Adds our custom `entrypoint.sh` for Azure configuration
 
-> **Note:** You don't need to download MoltBot separately - it's pulled fresh during the build. The resulting image is stored in your ACR as `MoltBot:latest`.
+> **Note:** You don't need to download MoltBot separately - it's pulled fresh during the build. The resulting image is stored in your ACR as `moltbot:latest`.
 
 ### Step 4: Configure Your Credentials
 
